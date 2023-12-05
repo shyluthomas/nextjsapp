@@ -41,7 +41,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 npm install mongodb
 
 # setup the mongo cluster
-https://account.mongodb.com/account/login?_ga=2.225040538.1033032901.1701725583-1898960865.1701725581
+
 
 # setup the mongo cluster
 - create the connections 
