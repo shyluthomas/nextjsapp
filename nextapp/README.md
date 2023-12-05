@@ -34,3 +34,21 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Local setup : need to install some packages
+
+# install mongodb
+npm install mongodb
+
+# setup the mongo cluster
+https://account.mongodb.com/account/login?_ga=2.225040538.1033032901.1701725583-1898960865.1701725581
+
+# setup the mongo cluster
+- create the connections 
+- create collections
+- create the user 
+
+# install bcryptjs fro hashing
+- npm install bcryptjs
+
+
