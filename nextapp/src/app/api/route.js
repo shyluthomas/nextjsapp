@@ -8,7 +8,6 @@ export async function POST(req) {
   try {
     const data = await req.json();
     const {email,password} = data;
-    console.log('first',data);
     if(!email || !password) {
         return NextResponse.json(
           {
@@ -21,7 +20,8 @@ export async function POST(req) {
     }
   const client = await connectToDatabase();
   const db = client.db();
-  const result = db.collection('user').insertOne({email:email,password: hashPassword(password)})
+  const pw = await hashPassword(password);
+  const result = db.collection('user').insertOne({email:email,password: pw})
     return NextResponse.json(
       {
       status: 200,
