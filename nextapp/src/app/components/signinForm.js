@@ -1,10 +1,11 @@
 'use client';
 import Link from "next/link";
-import { useRef, useState } from "react";
-import { signIn } from 'next-auth/react';
+import { useEffect, useRef, useState } from "react";
+import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from "next/navigation";
 import ApiValidator from "./apiValidation";
 import {Input, Button} from "@nextui-org/react";
+import Validator from "./validator";
 
 
 
@@ -14,17 +15,30 @@ export default function Signinform() {
   const passwordref = useRef();
   const router = useRouter();
   const [status, setStatus] = useState();
+  const [validation, setValidation] = useState()
+
+  const session = useSession();
+  
+  useEffect(() => {
+    if(session) {
+    router.replace('/home');
+    }
+
+  }, [session])
   async function submitHandler(event) {
     event.preventDefault();
     const email = emailref.current.value;
     const password = passwordref.current.value;
-    const result = await signIn('credentials',{redirect:false , email,password});
-    console.log('result', result)
-    if(!result?.error) {
-      router.replace("/home");
-    } else {
-      setStatus({status: result?.status, message: result?.error});
-    }
+      if(email && password) {
+        const result = await signIn('credentials',{redirect:false , email,password});
+        if(!result?.error) {
+          router.replace("/home");
+        } else {
+          setStatus({status: result?.status, message: result?.error});
+        }
+      } else {
+        setValidation({status: 'error', message: 'Email and Password required'});
+      }
   }
   return (
   
@@ -35,6 +49,7 @@ export default function Signinform() {
                   Sign In
               </h1>
              { status && <ApiValidator status={status}></ApiValidator> }
+             { validation && <Validator message={validation?.message}/> }
               <form className="space-y-4 md:space-y-6" action="#">
                   <div>
                     <Input
