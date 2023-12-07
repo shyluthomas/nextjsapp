@@ -51,4 +51,5 @@ npm install mongodb
 # install bcryptjs fro hashing
 - npm install bcryptjs
 
-
+## Running unit test cases
+- npm run test
