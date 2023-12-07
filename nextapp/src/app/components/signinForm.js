@@ -54,19 +54,21 @@ export default function Signinform() {
                   <div>
                     <Input
                       type="email"
-                      label="Email"
+                      aria-label="Email"
                       placeholder="junior@nextui.org"
                       className=""
                       ref={emailref}
+                      name="Email"
                     />
                   </div>
                   <div>
                     <Input
                       type="password"
-                      label="Email"
+                      aria-label="Password"
                       placeholder="********"
                       className=""
                       ref={passwordref}
+
                     />
                   </div>
                  
